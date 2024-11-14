@@ -29,8 +29,7 @@ jobs:
           name: production-files
           path: ./dist
       - name: Use the API key
-        run: |
-          echo "API_KEY=${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}" > .env
+        run: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
   deploy:
     name: Deploy
     needs: build
