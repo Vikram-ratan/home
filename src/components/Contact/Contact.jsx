@@ -7,13 +7,14 @@ import call_icon from '../../assets/call_icon.svg'
 
 const Contact = () => {
 
+    const formRef = useRef(null);
+    
     const onSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const apiKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
         formData.append("access_key", apiKey);
-        // console.log("access key", apiKey);
-
+        
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
 
@@ -28,6 +29,7 @@ const Contact = () => {
 
         if (res.success) {
             alert('Thank you for emailing me! I will be in touch with you shortly!');
+            formRef.current.reset();
         }
     };
 
