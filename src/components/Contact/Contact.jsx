@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import './Contact.css'
 import theme_pattern from '../../assets/theme_pattern.svg'
 import mail_icon from '../../assets/mail_icon.svg'
@@ -55,7 +55,7 @@ const Contact = () => {
                         </div>
                     </div>
                 </div>
-                <form onSubmit={onSubmit} className="contact-right">
+                <form onSubmit={onSubmit} className="contact-right" ref={formRef}>
                     <label htmlFor="">Your Name</label>
                     <input type="text" placeholder="Enter your name" name='name' />
                     <label htmlFor="">Your Email</label>
