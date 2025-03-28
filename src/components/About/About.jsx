@@ -24,7 +24,7 @@ const About = () => {
                     <div className="about-skills">
 
                         <div className="about-skill">
-                            <h1><span>AWS</span></h1>
+                            <h1><span>SQL</span></h1>
                         </div>
 
                         <div className="about-skill">
@@ -46,27 +46,6 @@ const About = () => {
                         <div className="about-skill">
                             <h1><span>Python</span></h1>
                         </div>
-
-                        <div className="about-skill">
-                            <h1><span>SQL</span></h1>
-                        </div>
-
-                        <div className="about-skill">
-                            <h1><span>Tensorflow</span></h1>
-                        </div>
-
-                        <div className="about-skill">
-                            <h1><span>Sci-kit Learn</span></h1>
-                        </div>
-
-                        <div className="about-skill">
-                            <h1><span>MySQL</span></h1>
-                        </div>
-
-                        <div className="about-skill">
-                            <h1><span>PostgreSQL</span></h1>
-                        </div>
-
                     </div>
                 </div>
 
