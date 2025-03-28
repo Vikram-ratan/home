@@ -38,7 +38,6 @@ const Work = () => {
                         <div className="work-description">
                             <div className="work-description-item">
                                 <h1>Title: {work.w_name}</h1>
-                                <h1>Country: {work.w_country}</h1>
                             </div>
 
                             <div className="work-description-item">
