@@ -55,14 +55,15 @@
     gap: 15px;
 }
 
-.footer-bottom-right p {
+.footer-bottom-right a {
     font-size: 14px;
     color: var(--primary-color);
     cursor: pointer;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
-.footer-bottom-right p:hover {
+.footer-bottom-right a:hover {
     color: var(--primary-dark);
 }
 

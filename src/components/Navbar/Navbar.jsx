@@ -1,18 +1,24 @@
-import React, { useState, useRef } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useRef } from "react";
 import './Navbar.css';
-import logo from '../../assets/logo.svg';
-import underline from '../../assets/nav_underline.svg';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import menu_open from '../../assets/menu_open.svg';
-import menu_close from '../../assets/menu_close.svg';
 
 
 const Navbar = ({ scrollToSection, refs }) => {
 
     const [selectedItem, setSelectedItem] = useState(null);
 
-    const handleItemClick = (item) => {
+    const sections = [
+        { label: 'About Me', key: 'about', ref: refs.aboutRef },
+        { label: 'Work', key: 'work', ref: refs.workRef },
+        { label: 'Projects', key: 'projects', ref: refs.projectsRef },
+        { label: 'Education', key: 'education', ref: refs.educationRef },
+    ];
+
+    const handleItemClick = (item, ref, key) => {
         setSelectedItem(item);
+        setMenu(key);
+        scrollToSection(ref);
 
         setTimeout(() => {
             setSelectedItem(null);
@@ -46,21 +52,25 @@ const Navbar = ({ scrollToSection, refs }) => {
         <div className="navbar">
             <div className="navbar-mobile" id="mobile-show">
                 <ul>
-                    {['About Me', 'Work', 'Projects', 'Education', 'Connect'].map((item, index) => (
+                    {sections.map((section) => (
                         <li
-                            key={index}
-                            onClick={() => handleItemClick(item)}
-                            style={{
-                                backgroundColor: selectedItem === item ? 'var(--button-bg)' : 'transparent',
-                                color: selectedItem === item ? 'white' : 'inherit'
-                            }}
+                            key={section.key}
                         >
-                            {item}
+                            <button
+                                type="button"
+                                onClick={() => handleItemClick(section.label, section.ref, section.key)}
+                                style={{
+                                    backgroundColor: selectedItem === section.label ? 'var(--button-bg)' : 'transparent',
+                                    color: selectedItem === section.label ? 'white' : 'inherit'
+                                }}
+                            >
+                                {section.label}
+                            </button>
                         </li>
                     ))}
                 </ul>
             </div>
-            <h1 href='#home'>Vikram</h1>
+            <h1>Vikram</h1>
             {/* <img src={logo} alt="logo" /> */}
             {/* <img src={menu_open} alt="logo" className="nav-mob-open" /> */}
             <ul ref={menuReference} className="nav-menu">
@@ -68,7 +78,8 @@ const Navbar = ({ scrollToSection, refs }) => {
                 {/* <li><AnchorLink className="anchor-link" offset={50} href='#home'><p onClick={() => setMenu('home')} className={menu === 'home' ? 'active' : ''}>Home</p></AnchorLink></li> */}
                 <li>
                     {/* <AnchorLink className="anchor-link" offset={50} href="#about"> */}
-                    <p
+                    <button
+                        type="button"
                         onClick={() => {
                             scrollToSection(refs.aboutRef);
                             setMenu('about');
@@ -76,12 +87,13 @@ const Navbar = ({ scrollToSection, refs }) => {
                         className={menu === 'about' ? 'active' : ''}
                     >
                         About Me
-                    </p>
+                    </button>
                     {/* </AnchorLink> */}
                 </li>
                 <li>
                     {/* <AnchorLink className="anchor-link" offset={50} href="#work"> */}
-                    <p
+                    <button
+                        type="button"
                         onClick={() => {
                             scrollToSection(refs.workRef);
                             setMenu('work');
@@ -89,12 +101,13 @@ const Navbar = ({ scrollToSection, refs }) => {
                         className={menu === 'work' ? 'active' : ''}
                     >
                         Work
-                    </p>
+                    </button>
                     {/* </AnchorLink> */}
                 </li>
                 <li>
                     {/* <AnchorLink className="anchor-link" offset={50} href="#projects"> */}
-                    <p
+                    <button
+                        type="button"
                         onClick={() => {
                             scrollToSection(refs.projectsRef);
                             setMenu('projects');
@@ -102,12 +115,13 @@ const Navbar = ({ scrollToSection, refs }) => {
                         className={menu === 'projects' ? 'active' : ''}
                     >
                         Projects
-                    </p>
+                    </button>
                     {/* </AnchorLink> */}
                 </li>
                 <li>
                     {/* <AnchorLink className="anchor-link" offset={50} href="#education"> */}
-                    <p
+                    <button
+                        type="button"
                         onClick={() => {
                             scrollToSection(refs.educationRef);
                             setMenu('education');
@@ -115,7 +129,7 @@ const Navbar = ({ scrollToSection, refs }) => {
                         className={menu === 'education' ? 'active' : ''}
                     >
                         Education
-                    </p>
+                    </button>
                     {/* </AnchorLink> */}
                 </li>
 

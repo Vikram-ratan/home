@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import "./Body.css"
 // import Hero from "../Hero/Hero"
 import Navbar from "../Navbar/Navbar"
@@ -42,16 +42,7 @@ const AppContainer = () => {
 
     return (
         <div className="app-container" id="container">
-
-            <div className="body-container-mobile">
-                <Navbar scrollToSection={scrollToSection} refs={{ aboutRef, workRef, projectsRef, educationRef }} />
-                <About />
-                <Work />
-                <Projects />
-                <Education />
-            </div>
             <div className="body-container">
-
                 <div className="body-navigator">
                     <Navbar scrollToSection={scrollToSection} refs={{ aboutRef, workRef, projectsRef, educationRef }} />
                 </div>

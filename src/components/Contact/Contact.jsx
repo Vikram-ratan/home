@@ -1,6 +1,5 @@
-import React,{useRef} from "react";
+import { useRef, useState } from "react";
 import './Contact.css'
-import theme_pattern from '../../assets/theme_pattern.svg'
 import mail_icon from '../../assets/mail_icon.svg'
 import location_icon from '../../assets/location_icon.svg'
 import call_icon from '../../assets/call_icon.svg'
@@ -8,9 +7,11 @@ import call_icon from '../../assets/call_icon.svg'
 const Contact = () => {
 
     const formRef = useRef(null);
+    const [statusMessage, setStatusMessage] = useState('');
     
     const onSubmit = async (event) => {
         event.preventDefault();
+        setStatusMessage('Sending your message...');
         const formData = new FormData(event.target);
         const apiKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
         formData.append("access_key", apiKey);
@@ -28,8 +29,10 @@ const Contact = () => {
         }).then((res) => res.json());
 
         if (res.success) {
-            alert('Thank you for emailing me! I will be in touch with you shortly!');
+            setStatusMessage('Thanks for reaching out! I will be in touch shortly.');
             formRef.current.reset();
+        } else {
+            setStatusMessage('Something went wrong. Please email me directly at Vikramratan09@gmail.com.');
         }
     };
 
@@ -41,28 +44,29 @@ const Contact = () => {
             </div>
             <div className="contact-section">
                 <div className="contact-left">
-                    <h1>Let's talk</h1>
-                    <p>I'm currently available to take on new projects, so feel free to send me a message about anything that you want me to work on. You can contact me anytime.</p>
+                    <h1>Let&apos;s talk</h1>
+                    <p>I&apos;m open to data, analytics, AI-assisted delivery, and business intelligence opportunities. If you&apos;re building something with data or need help turning analysis into decisions, feel free to reach out.</p>
                     <div className="contact-details">
                         <div className="contact-detail">
-                            <img src={mail_icon} alt="" /><p>Vikramratan09@gmail.com</p>
+                            <img src={mail_icon} alt="" aria-hidden="true" /><p>Vikramratan09@gmail.com</p>
                         </div>
                         <div className="contact-detail">
-                            <img src={call_icon} alt="" /><p>+1(214)727-1381</p>
+                            <img src={call_icon} alt="" aria-hidden="true" /><p>+1(214)727-1381</p>
                         </div>
                         <div className="contact-detail">
-                            <img src={location_icon} alt="" /><p>Richardson, TX, United States</p>
+                            <img src={location_icon} alt="" aria-hidden="true" /><p>Waco Area, TX, United States</p>
                         </div>
                     </div>
                 </div>
                 <form onSubmit={onSubmit} className="contact-right" ref={formRef}>
-                    <label htmlFor="">Your Name</label>
-                    <input type="text" placeholder="Enter your name" name='name' />
-                    <label htmlFor="">Your Email</label>
-                    <input type="email" placeholder="Enter your email" name='email' />
-                    <label htmlFor="">Write your message here!</label>
-                    <textarea name="message" rows="8" placeholder="Enter your message"></textarea>
-                    <button type="submit" className="contact-submit">Submit now</button>
+                    <label htmlFor="name">Your Name</label>
+                    <input id="name" type="text" placeholder="Enter your name" name='name' required />
+                    <label htmlFor="email">Your Email</label>
+                    <input id="email" type="email" placeholder="Enter your email" name='email' required />
+                    <label htmlFor="message">Write your message here!</label>
+                    <textarea id="message" name="message" rows="8" placeholder="Enter your message" required></textarea>
+                    <button type="submit" className="contact-submit">Send message</button>
+                    {statusMessage && <p className="contact-status">{statusMessage}</p>}
                 </form>
             </div>
 

@@ -20,10 +20,6 @@
     align-items: stretch;
 }
 
-.body-container-mobile {
-    display: none;
-}
-
 /* Navigator Styling */
 /* Navigator Styling */
 .body-navigator {
@@ -112,16 +108,26 @@
 
     .app-container {
         background-color: inherit;
-        /* width: 100vw; */
-        /* background-color: blue; */
     }
 
-    .body-container-mobile {
+    .body-container {
         display: flex;
         flex-direction: column;
     }
 
-    .body-container {
-        display: none;
+    .body-navigator {
+        position: sticky;
+        top: 0;
+        transform: none;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+
+    .body-content {
+        height: auto;
+        margin-left: 0;
+        overflow-y: visible;
+        padding: 10px;
     }
 }

@@ -107,3 +107,9 @@
 .contact-right .contact-submit:hover {
     background-color: var(--primary-dark);
 }
+
+.contact-status {
+    margin-top: 15px;
+    color: var(--background-color);
+    font-size: 15px;
+}

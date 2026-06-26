@@ -1,8 +1,36 @@
-# React + Vite
+# Vikram Ratan Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website for Vikram Ratan, built with React and Vite and deployed with GitHub Pages.
 
-Currently, two official plugins are available:
+Live site: https://vikram-ratan.github.io/home/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
+
+- React
+- Vite
+- GitHub Pages
+- Web3Forms
+
+## Sections
+
+- Hero
+- About
+- Work Experience
+- Projects
+- Education
+- Contact
+
+## Run locally
+
+```bash
+pnpm install
+pnpm dev
+```
+
+## Build
+
+```bash
+pnpm build
+```
+
+The site is configured with the `/home/` base path for GitHub Pages deployment.

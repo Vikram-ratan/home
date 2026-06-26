@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import './Work.css'
-import theme_pattern from '../../assets/theme_pattern.svg'
 import work_data from '../../assets/mywork_data'
-import arrow_icon from '../../assets/arrow_icon.svg'
 
 const Work = () => {
 
@@ -28,20 +26,25 @@ const Work = () => {
         <div id='work' className="work">
             <div className="work-title">
                 <h1>Work Experience</h1>
-                {/* <img src={theme_pattern} alt="" /> */}
             </div>
 
             <div className="work-container">
                 {work_data.map((work, index) => (
                     <div className="work-item" key={index}>
-                        {/* <img src={work.w_img} alt="" /> */}
+                        <div className="work-logo" aria-hidden={!work.w_img}>
+                            {work.w_img ? (
+                                <img src={work.w_img} alt={`${work.w_company} logo`} />
+                            ) : (
+                                <span>{work.w_logoText}</span>
+                            )}
+                        </div>
                         <div className="work-description">
                             <div className="work-description-item">
-                                <h1>Title: {work.w_name}</h1>
+                                <h1>{work.w_name}</h1>
+                                {work.w_client && <p className="work-client">Client: {work.w_client}</p>}
                             </div>
 
                             <div className="work-description-item">
-                                <h1>Description:</h1>
                                 <h2>{work.w_desc}</h2>
                             </div>
                         </div>
